@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-pod
+spec:
+  os: { name: windows }
+  containers:
+    - name: redis-pod
+      image: redis
+      volumeMounts:
+      - mountPath: /my-data
+        name: "my-hostpath-volume"   
+  volumes:
+  - name: "my-hostpath-volume"
+    hostPath:
+      path: "/var/lib/persist-2"
+      

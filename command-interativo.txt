@@ -1,0 +1,43 @@
+Criar serviço apache 
+kubectl run my-pod-apache-server --image httpd
+
+Ver todos os pods de todos os namespaces
+kubectl get pods --all-namespaces
+
+Delete pod 
+kubectl delete pods my-pod-apache-server
+
+Deletar todos os pods
+kubectl delete --all pod
+
+Aumentar o numero de replicas
+kubectl scale replicasets name-replicaset --replicas=2
+
+
+kubectl rollout status deployment.apps/frontend-deployment
+kubectl describe deployment frontend-deployment
+kubectl rollout history deployment frontend-deployment
+kubectl rollout history deployment frontend-deployment --revision=2
+kubectl rollout undo deployment frontend-deployment
+kubectl rollout pause deployment frontend-deployment
+kubectl rollout resume deployment frontend-deployment
+
+kubectl get pods --namespace default
+kubectl create namespace frontend --save-config
+kubectl apply -f tomcat.yml --namespace=frontend
+kubectl get pods -n frontend
+
+kubectl config set-context --current --namespace=frontend - configurar como default
+kubectl config set-context --current --namespace=default
+kubectl delete pods tomcat-pod -n frontend
+kubectl delete ns frontend
+
+minikube node add minikube-m03
+kubectl get pods -o wide --field-selector spec.nodeName=nameNode
+kubectl delete ds <name> 
+
+kubectl delete ds --cascade=orphan
+
+kubectl get nodes --show-labels
+kubectl label nodes minikube-m03 disktype=ssd
+kubectl label nodes minikube-m03 disktype-

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-pod
+spec:
+  containers:
+    - name: liveness-container-test
+      image: busybox
+      args:
+      - /bin/bash
+      - -c 
+      - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 5 # esperar por 5s para executar meu comando
+          periodSeconds: 5 # a cada 5s vai fazer a verificação do meu comando
+          failure:Threshold: 3 # tentar 3 vezes
