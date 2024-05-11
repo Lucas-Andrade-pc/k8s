@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cronjob
+spec:
+  schedule: "* * * * *"
+  failedJobsHistoryLimit: 5
+  successfulJobsHistoryLimit: 10
+  jobTemplate:
+    spec:
+      parallelism: 3
+      completions: 6
+      completionMode: "Indexed"
+      template:
+        spec:
+          containers:
+            - name: my-cronjob
+              image: busybox
+              command: ["bin/sh", "-c", "ping -c1 8.8.8.8"]
+          restartPolicy: Never
+
+    
