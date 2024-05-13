@@ -13,6 +13,7 @@ kubectl delete --all pod
 Aumentar o numero de replicas
 kubectl scale replicasets name-replicaset --replicas=2
 
+kubectl get namespaces
 
 kubectl rollout status deployment.apps/frontend-deployment
 kubectl describe deployment frontend-deployment
@@ -41,3 +42,7 @@ kubectl delete ds --cascade=orphan
 kubectl get nodes --show-labels
 kubectl label nodes minikube-m03 disktype=ssd
 kubectl label nodes minikube-m03 disktype-
+
+
+command patch: altera um recurso ainda em execução
+kubectl patch cronjob my-cronjob -p '{"spec" : {"suspend":true}}'
