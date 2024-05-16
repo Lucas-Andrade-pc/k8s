@@ -3,7 +3,10 @@ kind: Job
 metadata:
   name: my-job
 spec:
-  completions: 5
+  completions: 10
+  completionMode: "Indexed"
+  parallelism: 2
+  activeDeadlineSeconds: 15 # quanto maximo de segundos para cada job
   template:
     metadata:
       name: my-job-pod

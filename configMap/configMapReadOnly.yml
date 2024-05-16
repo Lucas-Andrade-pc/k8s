@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myconfimap
+  namespace: default
+data:
+  #Connection databases config
+  my.config.db: |
+    database=mariadb
+    database_uri=mariadb://localhost:3306
+#immutable: true

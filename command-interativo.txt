@@ -46,3 +46,10 @@ kubectl label nodes minikube-m03 disktype-
 
 command patch: altera um recurso ainda em execução
 kubectl patch cronjob my-cronjob -p '{"spec" : {"suspend":true}}'
+
+kubectl create cm my-cm --from-file=my-app-file.txt --from-literal=my-description=test
+
+tipos de secrets
+kubernetes.io/tls -> tls cecrtificates and keys
+kubernetes.io/ssh-auth -> keys: ssh-privatekeys
+kubernetes.io/basic-auth -> keys: username / password  são requeridos
