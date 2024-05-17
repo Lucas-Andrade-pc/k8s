@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: redis-pod
 spec:
-  os: { name: windows }
+  #os: { name: windows }
   containers:
     - name: redis-pod
       image: redis
