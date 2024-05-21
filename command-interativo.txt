@@ -53,3 +53,14 @@ tipos de secrets
 kubernetes.io/tls -> tls cecrtificates and keys
 kubernetes.io/ssh-auth -> keys: ssh-privatekeys
 kubernetes.io/basic-auth -> keys: username / password  são requeridos
+
+kubectl get pv -> vizualisar persistence volume
+
+openssl genrsa -out auditor.key 2048
+openssl req -new -key auditor.key -out auditor.csr -subj "CN=/auditor/O=MyCompany"
+
+kubectl config current-context --namespace=jupyter
+
+kubectl port-forward jupyter-deploy-7bb8c74bc-qxkv7 8080:8888
+kubectl expose deployment jupyter-deploy -n jupyter --type=NodePort --name=jupyter-svc # simular o comando
+kubectl expose deployment jupyter-deploy -n jupyter --type=NodePort --name=jupyter-svc

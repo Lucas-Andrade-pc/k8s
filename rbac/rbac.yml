@@ -1,0 +1,23 @@
+apiVersion: rbac.autorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: auditor-role
+rules:
+  - apiGroups: [""]
+    resources: ["pods","services"]
+    verbs: ["get","list","watch"]
+---
+apiVersion: rbac.autorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  namespace: default
+  name: auditor-role-binding
+subjects:
+  - kind: User
+    name: auditor
+    apiGroup: rbac.autorization.k8s.io
+roleRef:
+  kind: Role
+  name: auditor-role
+  apiGroup: rbac.autorization.k8s.io

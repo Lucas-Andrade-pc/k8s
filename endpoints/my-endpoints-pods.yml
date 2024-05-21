@@ -4,8 +4,8 @@ metadata:
   name: my-endpoints-service
 subsets:
   - addresses:
-      - ip: 10.244.0.157
-      - ip: 10.244.0.158
+      - ip: 10.1.1.99
+      - ip: 10.1.1.98
     ports:
       - port: 80
 
